@@ -24,6 +24,7 @@ public class UserDaoImpl extends BaseDaoImpl implements IUserDao{
 		return this.executeUpdate(sql, new Object[]{u.getId(), u.getAge(), u.getName()});
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
 		String sql = "select * from t_user where 1=1 ";
