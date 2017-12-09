@@ -32,7 +32,15 @@
     <version>3.0.1</version>
     <scope>provided</scope>
 </dependency>
+
+<dependency>  
+    <groupId>org.apache.maven.plugins</groupId>  
+    <artifactId>maven-resources-plugin</artifactId>  
+    <version>2.6</version>  
+</dependency> 
   </dependencies>
+  
+  
   <build>
     <finalName>helloworld</finalName>
   </build>
