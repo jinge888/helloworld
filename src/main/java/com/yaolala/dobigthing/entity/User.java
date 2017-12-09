@@ -27,11 +27,17 @@ public class User {
 		this.name = name;
 	}
 	public User(int id, int age, String name) {
-		super();
 		this.id = id;
 		this.age = age;
 		this.name = name;
 	}
+	public User() {
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", age=" + age + ", name=" + name + "]";
+	}
+	
 	
 	
 }

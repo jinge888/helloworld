@@ -13,6 +13,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.yaolala.dobigthing.dao.ResultSet2EntityMapping;
+
 public class DBUtil {
 	private static Logger logger = Logger.getLogger(DBUtil.class);
 	/**private static final String USER_NAME = "root";
@@ -25,7 +27,7 @@ public class DBUtil {
 	/**
 	 * 获得数据库连接
 	 * @return
-	 */
+	*/
     public static Connection getConnection(){
         Connection conn = null;
         try {
@@ -37,7 +39,7 @@ public class DBUtil {
         		logger.error("获取数据库连接异常", e);
         }
         return conn;
-    }
+    } 
     
     public List<Object[]> query(String sql, Object[] args) {
     	List<Object[]> list = new ArrayList<Object[]>();
@@ -45,9 +47,11 @@ public class DBUtil {
             Class.forName(DBConfig.DRIVER_NAME);
             conn = DriverManager.getConnection(DBConfig.DATABASE_URL + DBConfig.DATABASE, DBConfig.USER_NAME, DBConfig.PWD);
             preparedStatment = conn.prepareStatement(sql);
-            for (int i = 0; i < args.length; i++) {
-				preparedStatment.setObject(i, args[i]);
-			}
+            if(args != null) {
+	            for (int i = 0; i < args.length; i++) {
+					preparedStatment.setObject(i+1, args[i]);
+				}
+            }
             rs = preparedStatment.executeQuery();
             ResultSetMetaData md = rs.getMetaData(); //获得结果集结构信息,元数据  
             int columnCount = md.getColumnCount();   //获得查询结果的列数 
@@ -69,6 +73,54 @@ public class DBUtil {
         }
         return list;
     }
+    
+    public List query(String sql, Object[] args, ResultSet2EntityMapping mapping) {
+    	List<Object> list = new ArrayList<Object>();
+        try {
+            Class.forName(DBConfig.DRIVER_NAME);
+            conn = DriverManager.getConnection(DBConfig.DATABASE_URL + DBConfig.DATABASE, DBConfig.USER_NAME, DBConfig.PWD);
+            preparedStatment = conn.prepareStatement(sql);
+            if(args != null) {
+            	for (int i = 0; i < args.length; i++) {
+    				preparedStatment.setObject(i+1, args[i]);
+    			}
+    		}
+            rs = preparedStatment.executeQuery();
+            while (rs.next()) { //循环所有的行
+            	Object obj = mapping.mapping(rs);
+            	list.add(obj);
+			}
+        } catch (ClassNotFoundException e) {
+            logger.error("找不到数据库驱动", e);
+        } catch (SQLException e) {
+        	logger.error("数据库查询异常", e);
+        } finally {
+        	this.close();
+        }
+        return list;
+    }
+    
+    public int executeUpdate(String sql, Object[] args) { 
+    	int rows = 0;
+    	try {
+            Class.forName(DBConfig.DRIVER_NAME);
+            conn = DriverManager.getConnection(DBConfig.DATABASE_URL + DBConfig.DATABASE, DBConfig.USER_NAME, DBConfig.PWD);
+            preparedStatment = conn.prepareStatement(sql);
+            if(args != null) {
+	            for (int i = 0; i < args.length; i++) {
+					preparedStatment.setObject(i+1, args[i]);
+				}
+            }
+            rows = preparedStatment.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            logger.error("找不到数据库驱动", e);
+        } catch (SQLException e) {
+        	logger.error("获取数据库连接异常", e);
+        } finally {
+        	this.close();
+        }
+        return rows;
+    } 
     
     public void close() {
     	try {
