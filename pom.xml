@@ -40,8 +40,11 @@
 </dependency> 
   </dependencies>
   
-  
+  <properties>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+</properties>
   <build>
     <finalName>helloworld</finalName>
   </build>
+  
 </project>

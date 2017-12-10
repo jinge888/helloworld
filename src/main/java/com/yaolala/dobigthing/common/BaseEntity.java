@@ -21,7 +21,7 @@ public class BaseEntity {
 	 * @return
 	 */
 	public static <T extends BaseEntity> Map<Long,T> idEntityMap(Collection<T> list){
-		Map<Long,T> map = new HashMap<>();
+		Map<Long,T> map = new HashMap<Long, T>();
 		
 		if(null == list ||0 == list.size()){
 			return map;

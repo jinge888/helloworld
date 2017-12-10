@@ -110,7 +110,6 @@ public class Node implements Comparable<Node>{
 
 
 
-	@Override
 	public int compareTo(Node o) {
 		if (order>o.order) {
 			return 1;

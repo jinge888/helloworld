@@ -8,7 +8,6 @@ import com.yaolala.dobigthing.entity.User;
 
 public class UserMapping implements ResultSet2EntityMapping {
 
-	@Override
 	public Object mapping(ResultSet rs) throws SQLException {
 		int i = 1;
 		User u = new User();

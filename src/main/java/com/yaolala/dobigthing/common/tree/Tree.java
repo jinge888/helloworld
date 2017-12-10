@@ -14,7 +14,7 @@ import com.yaolala.dobigthing.entity.Function;
  *
  */
 public class Tree {
-	private List<Node> nodes = new LinkedList<>(); //子节点
+	private List<Node> nodes = new LinkedList<Node>(); //子节点
 	
 	private Node root = null; //根节点
 	
