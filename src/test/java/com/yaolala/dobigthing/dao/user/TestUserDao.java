@@ -9,6 +9,11 @@ import org.junit.Test;
 import com.yaolala.dobigthing.dao.user.impl.UserDaoImpl;
 import com.yaolala.dobigthing.entity.User;
 
+/**
+ * 测试啊
+ * @author liaoxiaojin
+ *
+ */
 public class TestUserDao {
 	
 	@Test
