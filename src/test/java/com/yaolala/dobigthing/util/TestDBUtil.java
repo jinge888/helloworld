@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -29,7 +30,8 @@ public class TestDBUtil {
     		Connection conn = DBUtil.getConnection();
     		String sql="insert into t_user values (?,?,?)";
     		PreparedStatement pstmt = null;
-    		User u = new User(11, 24, "liaoxiaojin");
+    		Random r = new Random();
+    		User u = new User(r.nextInt(), 24, "liaoxiaojin");
         try {
             conn = DBUtil.getConnection();
             pstmt = conn.prepareStatement(sql);
