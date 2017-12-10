@@ -24,7 +24,7 @@ public class TestDBUtil {
         logger.fatal("fatal...........");  
     }  
 	
-	//@Test
+	@Test
     public void testGetConnection() {
     		Connection conn = DBUtil.getConnection();
     		String sql="insert into t_user values (?,?,?)";
