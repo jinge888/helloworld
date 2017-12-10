@@ -14,7 +14,11 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.yaolala.dobigthing.dao.ResultSet2EntityMapping;
-
+/**
+ * 只保留获取连接和关闭连接的方法
+ * @author liaoxiaojin
+ *
+ */
 public class DBUtil {
 	private static Logger logger = Logger.getLogger(DBUtil.class);
 	/**private static final String USER_NAME = "root";
