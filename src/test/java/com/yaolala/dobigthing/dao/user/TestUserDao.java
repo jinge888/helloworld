@@ -15,6 +15,7 @@ public class TestUserDao {
 	public void testFindById() {
 		IUserDao userDao = new UserDaoImpl();
 		User u = userDao.findById(11);
+		System.out.println(u);
 		Assert.assertEquals("liaoxiaojin", u.getName());
 	}
 
