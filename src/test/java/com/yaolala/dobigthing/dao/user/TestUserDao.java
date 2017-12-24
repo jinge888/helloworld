@@ -19,7 +19,7 @@ public class TestUserDao {
 	@Test
 	public void testFindById() {
 		IUserDao userDao = new UserDaoImpl();
-		User u = userDao.findById(11);
+		User u = userDao.findUserById(11);
 		System.out.println(u);
 		Assert.assertEquals("liaoxiaojin", u.getName());
 	}
