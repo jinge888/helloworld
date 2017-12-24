@@ -12,7 +12,7 @@ public class UserMapping implements ResultSet2EntityMapping {
 		int i = 1;
 		User u = new User();
 		u.setId(rs.getInt(i++));
-		u.setAge(rs.getInt(i++));
+		u.setPwd(rs.getString(i++));
 		u.setName(rs.getString(i++));
 		return u;
 	}
