@@ -39,7 +39,7 @@ public class TestUserDao {
 	@Test
 	public void testFindAll() {
 		IUserDao userDao = new UserDaoImpl();
-		List<User> list = userDao.findAll(null);
+		List<User> list = userDao.findAll();
 		for (User user : list) {
 			System.out.println(user);
 		}
