@@ -9,12 +9,18 @@ import org.junit.Test;
 import com.yaolala.dobigthing.dao.user.impl.UserDaoImpl;
 import com.yaolala.dobigthing.entity.User;
 
+/**
+ * 测试啊
+ * @author liaoxiaojin
+ *
+ */
 public class TestUserDao {
 	
 	@Test
 	public void testFindById() {
 		IUserDao userDao = new UserDaoImpl();
 		User u = userDao.findById(11);
+		System.out.println(u);
 		Assert.assertEquals("liaoxiaojin", u.getName());
 	}
 
@@ -33,7 +39,7 @@ public class TestUserDao {
 	@Test
 	public void testFindAll() {
 		IUserDao userDao = new UserDaoImpl();
-		List<User> list = userDao.findAll();
+		List<User> list = userDao.findAll(null);
 		for (User user : list) {
 			System.out.println(user);
 		}
