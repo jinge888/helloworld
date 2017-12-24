@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 import com.yaolala.dobigthing.dao.ResultSet2EntityMapping;
 /**
- * 只保留获取连接和关闭连接的方法2
+ * 只保留获取连接和关闭连接的方法
  * @author liaoxiaojin
  *
  */
